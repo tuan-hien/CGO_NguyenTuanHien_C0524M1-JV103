@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple form</title>
+</head>
+<body>
+    <form method="get" action="tao_form_co_ban.html" class="wufoo">
+        <h1>Order list</h1>
+        <h2>What would you like to buy?</h2>
+        <select>
+            <option value="" > Product A </option>
+            <option value="" > Product B </option>
+            <option value="" > Product C </option>
+        </select>
+        <p>How many would you like to buy?</p>
+        <input  type="radio" name="rd"/> 1 <br>
+        <input  type="radio" name="rd"/> 2 <br>
+        <input  type="radio" name="rd"/> 3 <br>
+        <input  type="radio" name="rd"/> More <br>
+        <p>Please type in your desired quantity if your choice is More</p>
+        <input type="text" placeholder="Number only" size="8"/>
+
+        <p>Name<span style="color:red">*</span></p>
+        <input type="text" name="firstname" placeholder="First Name" size="20">
+        <input type="text" name="lastname" placeholder="Last Name" size="20">
+
+        <p>Phone Number</p>
+        <input type="text" name="phonenumber1" size="5"> -
+        <input type="text" name="phonenumber2" size="5"> -
+        <input type="text" name="phonenumber3" size="5"> <br>
+
+        <p><input type="button" name="btSubmit" value="Submit"></p>
+        <style>
+            .wufoo {
+                font-family: "Lucida Console", "Lucida Sans Unicode", Tahoma, sans-serif;
+            }
+        </style>
+    </form>
+</body>
+</html>
