@@ -2,13 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Your hobbies</title>
+    <title>Simple form</title>
     <style>
+        body {
+            padding: 5px;
+        }
         h2 {
             background-color: #ff6a00;
             color: white;
             text-align: center;
             font-family: sans-serif;
+            line-height: 40px;
         }
         table, th, td {
             background-color: white;
@@ -27,27 +31,34 @@
     <table>
         <tr>
             <td style="color:blue; text-align: right">Họ và tên</td>
-            <td> <input type="text" name="yourname" size="50px"/> </td>
+            <td colspan="2"> <label for="name"> <input id="name" type="text" name="yourname" size="50px"/> </label> </td>
         </tr>
         <tr>
             <td style="color: blue; text-align: right">Email</td>
-            <td> <input type="text" name="email" size="40px"> </td>
+            <td colspan="2"> <label for="email"> <input id="email" type="text" name="email" size="40px"> </label> </td>
         </tr>
         <tr>
             <td style="color: blue; text-align: right">Sở thích</td>
-            <td style="text-align: left; color: orangered" > <input type="checkbox" name="hobby">Thể thao</td>
-            <td style="text-align: left; color: orangered" > <input type="checkbox" name="hobby">Âm nhạc</td>
-            <td style="text-align: left; color: orangered" > <input type="checkbox" name="hobby">Du Lịch</td>
+            <td style="text-align: left; color: orangered">
+                <label for="sport"> <input id="sport" type="checkbox" name="hobby"> </label>Thể thao</td>
+            <td style="text-align: left; color: orangered">
+                <label for="music"> <input id="music" type="checkbox" name="hobby"> </label>Âm nhạc</td>
+            <td style="text-align: left; color: orangered" >
+                <label for="reading"> <input id="reading" type="checkbox" name="hobby"></label>Đọc sách</td>
         </tr>
         <tr>
             <td></td>
-            <td style="text-align: left; color: orangered" > <input type="checkbox" name="hobby">Lướt web</td>
-            <td style="text-align: left; color: orangered" > <input type="checkbox" name="hobby">Chơi game</td>
-            <td style="text-align: left; color: orangered" > <input type="checkbox" name="hobby">Điện ảnh</td>
+            <td style="text-align: left; color: orangered" >
+                <label for="web"> <input id="web" type="checkbox" name="hobby"></label>Lướt web</td>
+            <td style="text-align: left; color: orangered" >
+                <label for="game"> <input id="game" type="checkbox" name="hobby"></label>Chơi game</td>
+            <td style="text-align: left; color: orangered" >
+                <label for="movie"> <input id="movie" type="checkbox" name="hobby"></label>Điện ảnh</td>
         </tr>
         <tr>
             <td></td>
-            <td style="text-align: left; color: orangered" > <input type="checkbox" name="hobby">Du lịch</td>
+            <td style="text-align: left; color: orangered" >
+                <label for="travel"> <input id="travel" type="checkbox" name="hobby"></label>Du Lịch</td>
         </tr>
     </table>
             <p style="text-align: center"> <input type="button" name="Submit" value="Gửi thông tin">
