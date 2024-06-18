@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market survey</title>
+    <style>
+        form {
+            line-height: 20px;
+        }
+        body, h1, h2, h3, h4, h5, h6, p {
+            font-family: Arial, sans-serif;
+        }
+        hr {
+            color: lightgray;
+        }
+        option  {
+            font-size: 15px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="form3-market_survey.html">
+    <h2>Market Research Survey</h2>
+    <p>Please take a few moments to complete this satisfaction survey.</p>
+    <hr>
+
+    <h4>What is your age range?</h4>
+    <label> <select name="age" style="width: 500px">
+        <option value="18-24">18-24</option>
+        <option value="25-34">25-34</option>
+        <option value="35-50">35-50</option>
+        <option value="50+">50+</option>
+    </select> </label>
+
+    <h4>What is your yearly income range?</h4>
+    <label> <select name="income" style="width: 500px">
+        <option value="0-25,000">$0 - $25,000</option>
+        <option value="25,001-50,000">$25,001 - $50,000</option>
+        <option value="50,001-100,000">$50,001 - $100,000</option>
+        <option value="100,000+">$100,000+</option>
+    </select> </label>
+
+    <h4>Gender Identity</h4>
+    <label> <input name="male" type="radio">Male</label> <br>
+    <label> <input name="female" type="radio">Female</label> <br>
+    <label> <input name="nonbinary" type="radio">Nonbinary</label> <br>
+    <label> <input name="other" type="radio">Other</label> <br>
+    <label> <input name="otherMore" type="text" size="30" onclick="otherMore()"> </label>
+
+    <h4>Which of the following products have your purchased in the last 2 months. Please check all that apply.</h4>
+    <label> <input name="product1" type="checkbox">Product 1</label> <br>
+    <label> <input name="product2" type="checkbox">Product 2</label> <br>
+    <label> <input name="product3" type="checkbox">Product 3</label> <br>
+
+    <h4>How often would you use our new product?</h4>
+    <label> <input name="daily" type="radio">Daily</label> <br>
+    <label> <input name="weekly" type="radio">Weekly</label> <br>
+    <label> <input name="monthly" type="radio">Monthly</label> <br>
+
+    <h4>What would you pay for the new product?</h4>
+    <table>
+        <tr>
+            <td style="float: right"> $ </td>
+            <td> <label> <input name="payAmountDollar" type="text" size="15px"> </label> </td>
+            <td> . </td>
+            <td><label> <input name="payAmountCent" type="text" size="5px"> </label></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td style="float: left;" >Dollars</td>
+            <td></td>
+            <td style="float: left;">Cents</td>
+
+        </tr>
+    </table>
+
+    <h4>What feature would you like to see in the new product?</h4>
+    <label> <textarea rows="5%" cols="150%"> </textarea> </label>
+
+    <p>Please rate your level of agreement with the following statements.</p>
+    <table style="table-layout: fixed">
+        <tr style="background-color: darkgray; line-height: 30px">
+            <td style="border: 1px solid #a5a5a5; width: auto; text-align: center; font-weight: bold"></td>
+            <td style="border: 1px solid #a5a5a5; width: 140px; text-align: center; font-weight: bold">Strongly disagree</td>
+            <td style="border: 1px solid #a5a5a5; width: 140px; text-align: center; font-weight: bold">Disagree</td>
+            <td style="border: 1px solid #a5a5a5; width: 140px; text-align: center; font-weight: bold">Agree</td>
+            <td style="border: 1px solid #a5a5a5; width: 140px; text-align: center; font-weight: bold">Strongly agree</td>
+        </tr>
+
+        <tr>
+            <td style="border: 1px solid #a5a5a5; font-weight: bold">Our products are priced fairly.</td>
+            <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="price1" type="radio"> <br> 1 </label></td>
+            <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="price2" type="radio"> <br> 2 </label></td>
+            <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="price3" type="radio"> <br> 3 </label></td>
+            <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="price4" type="radio"> <br> 4 </label></td>
+        </tr>
+
+        <tr style="background-color: lightgrey">
+        <td style="border: 1px solid #a5a5a5; font-weight: bold">Our products are high quality.</td>
+        <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="quality1" type="radio"> <br> 1 </label></td>
+        <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="quality2" type="radio"> <br> 2 </label></td>
+        <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="quality3" type="radio"> <br> 3 </label></td>
+        <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="quality4" type="radio"> <br> 4 </label></td>
+        </tr>
+
+        <tr>
+            <td style="border: 1px solid #a5a5a5; font-weight: bold">You would recommend our product to a friend or coworker.</td>
+            <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="recommend1" type="radio"> <br> 1 </label></td>
+            <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="recommend2" type="radio"> <br> 2 </label></td>
+            <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="recommend3" type="radio"> <br> 3 </label></td>
+            <td style="border: 1px solid #a5a5a5; text-align: center"><label> <input name="recommend4" type="radio"> <br> 4 </label></td>
+        </tr>
+    </table>
+
+    <p><label> <input type="button" name="Submit" value="Submit"> </label></p>
+</form>
+
+    <script>
+        function otherMore () {
+            document.write("Maximum of 250 characters.")
+        }
+    </script>
+
+</body>
+</html>
