@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade input</title>
+</head>
+<body>
+    <script>
+        let physicsGrade;
+        let chemistryGrade;
+        let biologyGrade;
+
+        physicsGrade = parseInt(prompt('Input physics grade here:'));
+        chemistryGrade = parseInt(prompt('Input chemistry grade here:'));
+        biologyGrade = parseInt(prompt('Input biology grade here:'));
+
+        let averageGrade = (physicsGrade + chemistryGrade + biologyGrade) / 3;
+
+        document.write('Average grade is: ' + averageGrade)
+    </script>
+
+</body>
+</html>
