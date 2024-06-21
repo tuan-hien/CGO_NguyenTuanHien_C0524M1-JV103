@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--THIS IS FOR REFERENCE - WORK IN PROGRESS-->
+<table>
+    <tr>
+        <td colspan="4">
+            <input id="window" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="nhap(1)">1</button>
+        </td>
+        <td>
+            <button onclick="nhap(2)">2</button>
+        </td>
+        <td>
+            <button onclick="nhap(3)">3</button>
+        </td>
+        <td>
+            <button onclick="nhap('+')">+</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="nhap(4)">4</button>
+        </td>
+        <td>
+            <button>5</button>
+        </td>
+        <td>
+            <button>6</button>
+        </td>
+        <td>
+            <button onclick="nhap('-')">-</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button>7</button>
+        </td>
+        <td>
+            <button>8</button>
+        </td>
+        <td>
+            <button>9</button>
+        </td>
+        <td>
+            <button>x</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="xo">C</button>
+        </td>
+        <td>
+            <button>0</button>
+        </td>
+        <td>
+            <button onclick="bang()">=</button>
+        </td>
+        <td>
+            <button>/</button>
+        </td>
+    </tr>
+</table>
+<script>
+    let input = document.getElementById("window");
+    // hàm cuối module mới học
+    function nhap(kyTu) {
+        input.value += kyTu;
+    }
+
+    // function so1() {
+    //   document.getElementById("window").value +=1;
+    // }
+    // function so2() {
+    //     document.getElementById("window").value +=2;
+    // }
+    // function so3() {
+    //     document.getElementById("window").value +=3;
+    // }
+    // function cong() {
+    //     document.getElementById("window").value +="+";
+    // }
+    function bang() {
+        let string = document.getElementById("window").value;
+        let result = eval(string);
+        input.value = result;
+    }
+    function xoa() {
+        input.value ="";
+    }
+
+    // format code => làm code đẹp hơn : Ctrl + Alt +L
+</script>
+</body>
+</html>

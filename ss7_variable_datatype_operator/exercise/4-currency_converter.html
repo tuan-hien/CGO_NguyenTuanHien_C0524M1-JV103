@@ -5,20 +5,21 @@
     <title>Currency converter</title>
 </head>
 <body>
+<form>
     <table>
         <tr>
-        <th>Amount</th>
-        <th>From currency</th>
-        <th>To currency</th>
-        <th></th>
+            <th>Amount</th>
+            <th>From currency</th>
+            <th>To currency</th>
+            <th></th>
         </tr>
 
         <tr>
-            <td><label><input type="text" name="amount" size="20px"></label></td>
+            <td><label><input type="number" id="amount"></label></td>
 
             <td>
                 <label>
-                    <select style="width: 120px">
+                    <select id="from">
                         <option value="VND">VND</option>
                         <option value=USD>USD</option>
                     </select>
@@ -27,25 +28,38 @@
 
             <td>
                 <label>
-                    <select style="width: 120px">
-                        <option value="VND">USD</option>
-                        <option value=USD>VND</option>
+                    <select id="to">
+                        <option value="VND">VND</option>
+                        <option value=USD>USD</option>
                     </select>
                 </label>
             </td>
-        </tr>
 
-        <tr>
             <td>
-                <button type="button" onclick="showMessage();">Convert</button>
+                <button type="button" onclick="convert();">Convert</button>
             </td>
         </tr>
     </table>
+</form>
 
-    <script>
-        function showMessage() {
-            document.write()
+<h3 id="result">Converted amount is: </h3>
+
+<script>
+    function convert() {
+        let convertedAmount = document.getElementById('amount').value;
+        let from = document.getElementById('from').value;
+        let to = document.getElementById('to').value;
+        let result = 0;
+
+        if (from === 'USD' && to === 'VND') {
+            result = convertedAmount * 24000;
+        } else if (from === 'VND' && to === 'USD') {
+            result = convertedAmount / 24000;
+        } else {
+            result = convertedAmount;
         }
-    </script>
+        document.getElementById('result').innerText = "Converted amount is: " + result;
+    }
+</script>
 </body>
 </html>

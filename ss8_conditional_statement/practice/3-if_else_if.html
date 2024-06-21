@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>If else if</title>
+</head>
+<body>
+<script>
+    let userName = prompt("Who's there?", '');
+    let password;
+
+    if (userName === 'Admin') {
+        password = prompt("What's your password?", '');
+        if (password === 'TheMaster') {
+            alert('Welcome!'); //true của pw=themaster
+        } else if (password === null) { //false của pw=themaster thì xét tiếp pw=null hay ko?
+            alert('Cancelled'); //true của pw=null
+        } else {
+            alert('Wrong password'); //false của pw=null
+        }
+    } else if (userName === null) { //false của userName=Admin
+            alert('Cancelled'); //true của userName=null
+        } else { //false cuủa userName=null
+            alert("I dont't know you");
+        }
+</script>
+
+</body>
+</html>
