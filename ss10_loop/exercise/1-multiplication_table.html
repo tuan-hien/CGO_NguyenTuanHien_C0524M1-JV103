@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication table</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 3px;
+            text-align: center;
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let sout, i;
+    sout = "<table>";
+    i = 2;
+    while (i < 10) { //outer loop decides the increment of i, which represents each row
+        sout += "<tr>"; //this will open new row add one row after each loop
+        let j = 1;
+        while (j < 10) {
+            sout += "<td>" + i + " x " + j + " = " + i * j + "</td>"; //add content to each cell of table
+            j++;
+        }
+        sout += "</tr>"; //close of each row
+        i++; //i will increase 1 each loop, which is new row
+    }
+    sout = sout + "</table>";
+    document.write(sout);
+</script>
+
+</body>
+</html>

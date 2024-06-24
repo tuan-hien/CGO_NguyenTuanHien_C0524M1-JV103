@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop in loop</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 300px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 3px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // let sout;
+    // sout = "<table>";
+    // for (i = 1; i <= 10; i++) { //'for' loop iterates from 1 to 10 to create rows of the table
+    //     sout = sout + "<tr>"; //appends an opening <tr> tag to sout to start a new row
+    //     for (j = 1; j <= 10; j++) { //inner loop: another 'for' loop iterates from 1 to 10 to create columns within each row
+    //         sout = sout + "<td>" + i * j + "</td>"; //appends a <td> element to sout for each cell in the current row
+    //         // The content of each cell is the product of the current row index (i) and the current column index (j)
+    //     }
+    //     sout = sout + "</tr>"; //appends a closing </tr> tag to sout to end the row after the inner loop has completed
+    // }
+    // sout = sout + "</table>"; // the closing </table> tag is appended to sout, completing the HTML table structure
+    // document.write(sout); //display the table
+
+    let sout, i, j;
+    sout = "<table>";
+    i = j = 1;
+    while (i <= 10) {
+        sout = sout + "<tr>";
+        while (j <= 10) {
+            sout = sout + "<td>" + i * j + "</td>";
+            j++;
+        }
+        sout = sout + "</tr>";
+        j = 1;
+        i++;
+    }
+    sout = sout + "</table>";
+    document.write(sout);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Days of month</title>
+</head>
+<body>
+<form>
+    <label> <input id="month" type="number" min="1" max="12"> </label>
+    <!--type = number để tránh việc điền vào chữ cái
+    gán id month để khởi tạo biến month trong script-->
+    <label>
+        <button type="button" onclick="tellDays()">Tell days</button>
+    </label> <!--tạo button với hàm onclick tên tellDays để tạo hàm trong script-->
+</form>
+
+<p id="numDays"></p> <!--tạo một paragraph rỗng với id là số ngày trong tháng sẽ được hiển thị-->
+
+<script>
+    function tellDays() {
+        let month = +document.getElementById('month').value;
+        //khởi tạo biến month để lấy giá trị (value) từ ô input bên trên
+        //phải đặt dấu + trước document để giá trị được nhập sẽ được chuyển về số nguyên
+        let numDays;
+        //khởi tạo biến numDays để hiển thị số ngày trong tháng
+
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                numDays = '31'; //vì cần hiển thị dạng chuỗi nên đặt 31 vào trong nháy đơn
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                numDays = '30'; //vì cần hiển thị dạng chuỗi nên đặt 30 vào trong nháy đơn
+                break;
+            case 2:
+                numDays = '28 or 29'; //vì cần hiển thị dạng chuỗi nên đặt 28, 29 vào trong nháy đơn
+                break;
+            default:
+                document.write("Invalid month");
+                //do đã giới hạn min, max cho month nên default này vô dụng, đặt đây cho trọn vẹn switch-case
+                //nhưng nhập tay số thứ tự của tháng (ví dụ: 13) thì vẫn nhập được --> câu được hiển thị ra sẽ hơi vô nghĩa nên ghi đè vào câu khác
+        }
+        document.getElementById('numDays').innerText = ("Month " + month + " has " + numDays + " days"); //Cập nhật paragraph với số ngày trong từng case
+    }
+</script>
+</body>
+</html>

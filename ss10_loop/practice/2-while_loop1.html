@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>While loop 1</title>
+</head>
+<body>
+    <script>
+        let i = +prompt("Input your number: ",'');
+        let total = 0;
+        while (i != -1) {
+            total = total + i;
+            document.write(i + "<br>")
+            i = +prompt("Input your next number: ",'');
+        }
+
+        document.write("Total = " + total);
+
+    </script>
+</body>
+</html>
