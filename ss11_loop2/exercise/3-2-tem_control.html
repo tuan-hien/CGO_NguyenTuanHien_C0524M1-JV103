@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature control</title>
+</head>
+<body>
+<script>
+    //Nếu nhiệt độ nhập vào trên 100, yêu cầu người dùng giảm nhiệt độ.
+    //Nếu nhiệt độ dưới 20, yêu cầu người dùng tăng nhiệt độ.
+    //Vậy nghĩa là phải lặp lại việc nhập nhiệt độ khi nhỏ hơn 20 hoặc lớn hơn 100
+
+    let t = parseFloat(prompt("Input temperature here: ", ""));
+    for (; ;) { //tạo một vòng lặp bên ngoài
+        if (t >= 100) { //xét điều kiện lớn hơn 100 trước với if đơn
+            t = parseFloat(prompt("Decrease temperature"));
+        } else if (t <= 20) {
+            t = parseFloat(prompt("Increase temperature"));
+        } else if (t >= 21 && t <= 99) {
+            if (t >= 70 && t <= 99) {
+                document.write(t + " is a little hot");
+            } else if (t >= 40 && t <= 69) {
+                document.write(t + " is a comfortable temperature");
+            } else if (t >= 21 && t <= 39) {
+                document.write(t + " is a bit chilly");
+            }
+            break; //Thoát khỏi loop thì nhiệt độ trong khoảng phù hợp
+        }
+    }
+</script>
+
+</body>
+</html>

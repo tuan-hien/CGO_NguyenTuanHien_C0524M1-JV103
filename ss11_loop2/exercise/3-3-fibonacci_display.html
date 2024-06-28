@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci</title>
+</head>
+<body>
+<script>
+    //Hiển thị ra 20 số trong dãy fibonacci đầu tiên.
+    //Các số đầu của dãy Fibonacci: 1, 1, 2, 3, 5, 8, 13.
+
+    let number = +prompt('Input the number of Fibonacci string: ', '');
+    let a = 1; //gán biến a = 1, vì nó là giá trị khởi tạo đầu tiên của dãy
+    let b = 1; //gán biến b = 1, số nó là giá trị khởi tạo thứ hai của dãy
+    let count = 1; //bộ đếm số, so sánh với number
+
+    document.write(a + " ");
+    //viết số a ra trước vì nó nằm ngoài vòng lặp, dù dùng loop gì thì vẫn phải in số đầu tiên ra trước
+
+    for (;count < number;) { //count ko nên = number vì đã phải trừ đi số đầu tiên
+        document.write(b + " "); //bắt đầu vòng lặp, in ra số thứ 2, cũng là số đầu tiên của 2nd loop
+        let c = a + b; //số thứ 3 chính là tổng của 2 số trước nó
+        a = b; //lặp lại: coi số thứ 2 của 1st loop là số đầu tiên của 2nd loop
+        b = c; //lặp lại: coi số thứ 3 của 1st loop là số thứ hai của 2nd loop
+        //1st loop: a    b    c
+        //          1    1    2
+        //2nd loop:      a    b    c
+
+        count++ //bộ đếm cộng 1 đơn vị
+    }
+
+</script>
+</body>
+</html>

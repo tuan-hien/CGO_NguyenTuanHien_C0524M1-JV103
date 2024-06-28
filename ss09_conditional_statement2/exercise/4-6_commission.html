@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Commission</title>
+</head>
+<body>
+<script>
+    let r = +prompt("Input revenue here: ", "");
+    let rate;
+    let c;
+
+    if (r < 1000000000) {
+        rate = 0.00;
+
+    } else if (r < 2000000000) {
+        rate = 0.01;
+
+    } else if (r < 3000000000) {
+        rate = 0.02;
+
+    } else if (r < 4000000000) {
+        rate = 0.03;
+
+    } else {
+        rate = 0.04
+    }
+
+    c = r * rate;
+    if (r < 1000000000) {
+        document.write("Commission is: 0");
+    } else {
+        document.write("Commission is: " + c.toLocaleString());
+        //toLocaleString formats the number according to the conventions of a specified locale.
+    }
+</script>
+
+</body>
+</html>

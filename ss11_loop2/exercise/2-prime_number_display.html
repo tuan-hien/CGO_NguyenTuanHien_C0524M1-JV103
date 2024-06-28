@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display prime numbers</title>
+</head>
+<body>
+
+<script>
+    let number = +prompt("Input the numbers of prime number: ", '');
+    let count = 0;
+
+    function isPrime(num) { //hàm kiểm tra sô nguyên tố, với biến là num
+        if (num <= 1) return false; // Trường hợp đặc biệt: Các số nhỏ hơn hoặc bằng 1 không phải là số nguyên tố
+        for (let i = 2; i <= Math.sqrt(num); i++) { //Lặp từ 2 đến căn bậc hai của num
+            if (num % i === 0) return false; //Nếu num chia hết cho bất kỳ i nào, nó không phải là số nguyên tố
+        }
+        return true; //Nếu không tìm thấy ước số nào, num là số nguyên tố
+    }
+
+    let num = 2; //bắt đầu gán cho 2 (số nguyên tố nhỏ nhất)
+    while (count < number) {
+        if (isPrime(num)) { //nếu điều kiện của hàm kiểm tra số nguyên tố là đúng thì thực hiện lệnh in
+            document.write(num + " ");
+            count++; //tăng bộ đếm thêm 1 đơn vị
+        }
+        num++; //tăng bộ đếm của số nguyên tố
+    }
+
+</script>
+</body>
+</html>

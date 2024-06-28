@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Average grade</title>
+</head>
+<body>
+<script>
+    let t = +prompt("Input testing grade (on the scale of 10) here: ", "");
+    let m = +prompt("Input mid-term grade (on the scale of 10) here: ", "");
+    let e = +prompt("Input end-term grade (on the scale of 10) here: ", "");
+
+    let average = (t + m + e) / 3;
+    if (average < 5) {
+        alert("Average is: " + average + ". Failed.");
+    } else if (average < 6.5) {
+        alert("Average is: " + average + ". Enough to pass.");
+    } else
+    if (average < 7.5) {
+        alert("Average is: " + average + ". Acceptable.");
+    } else if (average < 8.5) {
+        alert("Average is: " + average + ". Good.");
+    } else {
+        alert("Average is: " + average + ". Excellent.");
+    }
+</script>
+
+</body>
+</html>

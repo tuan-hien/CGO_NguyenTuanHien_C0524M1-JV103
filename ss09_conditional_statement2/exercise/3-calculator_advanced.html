@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator advanced</title>
+    <style>
+        th, tr, td {
+            border: 1px solid gray;
+        }
+
+        button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td colspan="4"><label><input id="window" type="text"></label></td>
+    </tr>
+    <tr>
+        <td><button onclick="enter(1)">1</button></td>
+        <td><button onclick="enter(2)">2</button></td>
+        <td><button onclick="enter(3)">3</button></td>
+        <td><button onclick="enter('+')">+</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="enter(4)">4</button></td>
+        <td><button onclick="enter(5)">5</button></td>
+        <td><button onclick="enter(6)">6</button></td>
+        <td><button onclick="enter('-')">-</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="enter(7)">7</button></td>
+        <td><button onclick="enter(8)">8</button></td>
+        <td><button onclick="enter(9)">9</button></td>
+        <td><button onclick="enter('x')">x</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="del()">C</button></td>
+        <td><button onclick="enter(0)">0</button></td>
+        <td><button onclick="equal()">=</button></td>
+        <td><button onclick="enter('/')">/</button></td>
+    </tr>
+</table>
+<script>
+
+    let number = document.getElementById("window");
+    /*Gán biến number vào giá trị nhận được trong ô có id là window, Không có phần gán giá trị .value tại biến number,
+    giá trị biến number sẽ được gán vào hàm nhapso()*/
+
+    function enter(char) { /*hàm enter(char) là hàm tổng hợp cho tất cả các nút trên calculator*/
+        number.value += char; /*lấy giá trị của biến number để gán vào hàm nhập số với giá trị là char,
+        dấu cộng trước dấu bằng tương đương number.value = number.value + char, để số tiếp theo không ghi đè lên số phía trước */
+    }
+
+    function del() {
+        number.value = ""; //xoá giá trị đang hiển thị trên window
+    }
+
+    function equal() {
+        let stringByValue = document.getElementById("window").value;
+        /*Gán giá trị của 1 chuỗi số trên màn hình thành biến stringByValue*/
+        let result = eval(stringByValue);
+        /*Hàm eval dùng để gán kết quả phép tính trong chuỗi stringByValue vào biến result*/
+        number.value = result;
+    }
+
+</script>
+</body>
+</html>

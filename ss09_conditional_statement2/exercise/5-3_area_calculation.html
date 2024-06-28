@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Area calculation</title>
+    <style>
+        tr, th, td {
+            height: 20px;
+        }
+
+        th {
+            width: 130px;
+        }
+
+        .div1 {
+            color: #ff6a00;
+        }
+
+        .button1 {
+            background-color: #ff6a00;
+            border-color: #ff6a00;
+            color: black;
+        }
+
+        .div2 {
+            color: blue;
+        }
+
+        .button2 {
+            background-color: blue;
+            border-color: blue;
+            color: white;
+        }
+
+        .div3 {
+            color: red;
+        }
+
+        .button3 {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr class="div1">
+        <th rowspan="2">Square</th>
+        <td>Side length</td>
+        <td>Area</td>
+    </tr>
+    <tr class="div1">
+        <td><label><input id="inputS" type="text" size="14px"></label></td>
+        <td><label><input id="outputS" type="text" readonly placeholder="Read only" size="14px"></label></td>
+        <td>
+            <button class="button1" type="button" onclick="convertS()">Convert</button>
+        </td>
+    </tr>
+    <tr></tr>
+    <tr class="div2">
+        <th rowspan="2">Rectangle</th>
+        <td>Side a length</td>
+        <td>Side b length</td>
+        <td>Area</td>
+    </tr>
+    <tr class="div2">
+        <td><label><input id="inputRe1" type="text" size="14px"></label></td>
+        <td><label><input id="inputRe2" type="text" size="14px"></label></td>
+        <td><label><input id="outputRe" type="text" readonly placeholder="Read only" size="14px"></label></td>
+        <td>
+            <button class="button2" type="button" onclick="convertRe()">Convert</button>
+        </td>
+    </tr>
+    <tr></tr>
+    <tr class="div3">
+        <th rowspan="2">Right triangle</th>
+        <td>Side a length</td>
+        <td>Side b length</td>
+        <td>Area</td>
+    </tr>
+    <tr class="div3">
+        <td><label><input id="inputR1" type="text" size="14px"></label></td>
+        <td><label><input id="inputR2" type="text" size="14px"></label></td>
+        <td><label><input id="outputR" type="text" readonly placeholder="Read only" size="14px"></label></td>
+        <td>
+            <button class="button3" type="button" onclick="convertR()">Convert</button>
+        </td>
+    </tr>
+</table>
+
+<script>
+    function convertS() {
+        let inputS = parseFloat(document.getElementById('inputS').value);
+        //phải thêm parseFloat để đổi giá trị nhập vào thành số thực, nếu ko thì ko chạy được
+        let outputS;
+
+        if (isNaN(inputS)) { //thêm điều kiện nếu giá trị nhập vào khác số Float thì báo invalid
+            outputS = 'Invalid input';
+        } else {
+            outputS = inputS **2;
+        }
+        document.getElementById('outputS').value = outputS;
+    }
+
+    function convertRe() {
+        let inputRe1 = parseFloat(document.getElementById('inputRe1').value);
+        //phải thêm parseFloat để đổi giá trị nhập vào thành số thực, nếu ko thì ko chạy được
+        let inputRe2 = parseFloat(document.getElementById('inputRe2').value);
+        let outputRe;
+
+        if (isNaN(inputRe1) || isNaN(inputRe2)) { //thêm điều kiện nếu giá trị nhập vào khác số Float thì báo invalid
+            outputRe = 'Invalid input';
+        } else {
+            outputRe = inputRe1 * inputRe2;
+        }
+        document.getElementById('outputRe').value = outputRe;
+    }
+
+    function convertR() {
+        let inputR1 = parseFloat(document.getElementById('inputR1').value);
+        //phải thêm parseFloat để đổi giá trị nhập vào thành số thực, nếu ko thì ko chạy được
+        let inputR2 = parseFloat(document.getElementById('inputR2').value);
+        let outputR;
+
+        if (isNaN(inputR1) || isNaN(inputR2)) { //thêm điều kiện nếu giá trị nhập vào khác số Float thì báo invalid
+            outputR = 'Invalid input';
+        } else {
+            outputR = (inputR1 * inputR2)/2;
+        }
+        document.getElementById('outputR').value = outputR;
+    }
+
+</script>
+</body>
+</html>

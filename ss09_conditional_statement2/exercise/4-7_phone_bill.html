@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone bill</title>
+</head>
+<body>
+<script>
+    let m = +prompt("Input total minutes here: ", "");
+    let f = 0;
+
+    const r1 = 100;
+    const r2 = 110;
+    const r3 = 130;
+    const r4 = 150;
+    const r5 = 200;
+
+    if (m < 500) {
+        f = m * r1;
+
+    } else if (m < 1000) {
+        f = m * r1 + (m - 500) * r2;
+
+    } else if (m < 1500) {
+        f = m * r1 + (m - 500) * r2 + (m - 1000) * r3;
+
+    } else if (m < 2000) {
+        f = m * r1 + (m - 500) * r2 + (m - 1000) * r3 + (m - 1500) * r4;
+
+    } else {
+        f = m * r1 + (m - 500) * r2 + (m - 1000) * r3 + (m - 1500) * r4 + (m - 2000) * r5;
+    }
+
+    document.write("Fee is: " + f.toLocaleString());
+    //toLocaleString formats the number according to the conventions of a specified locale.
+
+</script>
+
+</body>
+</html>

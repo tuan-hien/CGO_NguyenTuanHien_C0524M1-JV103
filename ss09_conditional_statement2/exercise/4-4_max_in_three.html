@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Max in 3</title>
+</head>
+<body>
+<script>
+    let a = +prompt("Input number a here: ", "");
+    let b = +prompt("Input number b here: ", "");
+    let c = +prompt("Input number c here: ", "");
+    if (a >= b) {
+        if (a >= c) {
+            alert(a + " is the max in three numbers: " + a + ", " + b + ", " + c);
+        } else {
+            alert(c + " is the max in three numbers: " + a + ", " + b + ", " + c);
+        }
+    } else if (b > c) {
+        alert(b + " is the max in three numbers: " + a + ", " + b + ", " + c);
+    } else {
+        alert(c + " is the max in three numbers: " + a + ", " + b + ", " + c);
+    }
+</script>
+
+</body>
+</html>

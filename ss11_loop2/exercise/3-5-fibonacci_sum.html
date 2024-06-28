@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci Sum</title>
+</head>
+<body>
+<script>
+    //Tính tổng của 20 số đầu tiên trong dãy fibonacci.
+    //Các số đầu của dãy Fibonacci: 1, 1, 2, 3, 5, 8, 13.
+
+    let number = 20;
+    let a = 0;
+    let b = 1;
+    let count = 1;
+    let sum = 0;
+
+    document.write(a.toLocaleString() + "<br>");
+
+    for (;count < number;) {
+        document.write(b.toLocaleString() + "<br>");
+        let c = a + b;
+        a = b;
+        b = c;
+        sum += a;
+        count++
+    }
+    document.write("Sum of first 20 Fibonacci is: " + sum.toLocaleString());
+</script>
+</body>
+</html>
