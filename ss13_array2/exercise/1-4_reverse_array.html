@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reverse array</title>
+</head>
+<body>
+<!--Viết chương trình khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.-->
+<script>
+    let number = +prompt("Input number here:", "");
+    let integers = [];
+
+    let i;
+    for (i = 0; i < number; i++) {
+        integers[i] = +prompt(`Input element ${i} here:`, '');
+    }
+    document.write(`Integers array = [${integers}] <br>`);
+
+    let reverse = [];
+    let first = 0;
+    let last = number - 1;
+    while (first <= last) {
+        reverse[first] = integers[last];
+        reverse[last] = integers[first];
+        first++;
+        last--;
+    }
+    document.write(`Reversed array = [${reverse}]`);
+</script>
+</body>
+</html>

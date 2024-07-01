@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array of integers 1</title>
+</head>
+<body>
+<p>Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử.</p>
+<p>Chương trình thực hiện tính và hiển thị xem có bao nhiêu số nguyên lớn hơn hoặc bằng 10.</p>
+<br>
+<script>
+    let integers = [];
+    let higher = "";
+    let lower = "";
+    let equal = "";
+    let i;
+    for (i = 0; i < 10; i++) {
+        integers[i] = +prompt("Input element " + i + " here:");
+    }
+    document.write(`Integers array = [${integers}] <br>`);
+
+    let countBigger = 0;
+    let countSmaller = 0;
+    let countEqual = 0;
+    for (i = 0; i < integers.length; i++) {
+        if (integers[i] < 10) {
+            countSmaller++;
+            lower += (integers[i] + '<br>');
+        } else if (integers[i] > 10) {
+            countBigger++;
+            higher += (integers[i] + '<br>');
+        } else {
+            countEqual++;
+            equal += (integers[i] + '<br>');
+        }
+    }
+    document.write(`There are/is ${countSmaller} element(s) smaller than 10: <br> ${lower}`);
+    document.write(`There are/is ${countBigger} element(s) bigger than 10: <br> ${higher}`);
+    document.write(`There are/is ${countEqual} element(s) equal to 10: <br> ${equal}`);
+
+</script>
+
+</body>
+</html>

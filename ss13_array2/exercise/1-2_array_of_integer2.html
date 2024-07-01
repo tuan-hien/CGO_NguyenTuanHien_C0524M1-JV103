@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array of integers 2</title>
+</head>
+<body>
+<p>Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử khác nhau.</p>
+<p>Chương trình hiển thị ra được phần tử có giá trị lớn nhất trong mảng và vị trí của phần tử đó.</p>
+<br>
+<script>
+    let integers = [];
+
+    let i;
+    for (i = 0; i < 10; i++) {
+        integers[i] = +prompt("Input element " + i + " here:");
+    }
+
+    let j;
+    let duplicate; //khai báo biến duplicate để kiểm tra trùng
+    do { //do-while để đảm bảo vòng lặp for bên trong còn chạy khi còn giá trị trùng
+        duplicate = false;
+        for (i = 0; i < 10; i++) {
+            for (j = i + 1; j < 10; j++) {
+                if (integers[i] === integers[j]) {
+                    integers[j] = +prompt("Duplicate! Re-input element " + j + " here:");
+                    //còn giá trị trùng là prompt này còn hiện
+                    duplicate = true;
+                }
+            }
+        }
+    } while (duplicate);
+
+    let max = integers[0];
+    let indexMax = 0;
+    for (i = 0; i < 10; i++) {
+        if (integers[i] > max) {
+            max = integers[i];
+            indexMax = i;
+        }
+    }
+    document.write(`Integers array = [${integers}] <br>`);
+    document.write(`Max is ${max} at position ${indexMax}`);
+
+</script>
+
+</body>
+</html>

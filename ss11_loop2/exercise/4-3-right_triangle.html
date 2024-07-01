@@ -8,18 +8,28 @@
 <!--In tam giác vuông. Các góc vuông nằm ở các vị trí khác nhau-->
 
 <script>
-    // let i = 1;
-    // while (i <= 5) {
-    //     let stars = "";
-    //     let j = 1;
-    //     while (j <= i) {
-    //         stars += "*";
-    //         j++;
-    //     }
-    //     document.write(stars + "<br>");
-    //     i++;
-    // }
+    // Hình 1: cách 1
+    let i = 1;
+    while (i <= 5) {
+        let stars = "";
+        let j = 1;
+        while (j <= i) {
+            stars += "*";
+            j++;
+        }
+        document.write(stars + "<br>");
+        i++;
+    }
 
+    // Hình 1: Cách 2 (Giảng viên hướng dẫn)
+    // for (let i = 1; i <= 5; i++) {
+    //     for (let j = 1; j <= i; j++) {
+    //         document.write("*");
+    //     }
+    //     document.write("<br>");
+    // }
+    document.write("<hr>")
+    // Hình 2: cách 1
     // let i = 5;
     // while (i >= 1) {
     //     let stars = "";
@@ -30,6 +40,22 @@
     //     }
     //     document.write(stars + "<br>");
     //     i--;
+    // }
+
+    // Hình 2: cách 2
+    for (let i = 5; i >= 1; i--) {
+        for (let j = 1; j <= i; j++) {
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+    document.write("<hr>")
+    // Hình 3 WORK IN PROGRESS
+    // for (let i = 1; i <= 5; i++) {
+    //     for (let j = 1; j <= i; j++) {
+    //         document.write("*");
+    //     }
+    //     document.write("<br>");
     // }
 
 </script>

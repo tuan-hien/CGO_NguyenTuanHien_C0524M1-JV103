@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle</title>
+</head>
+<body>
+<!--In hình chữ nhật-->
+
+<script>
+
+    let i = 1;
+    while (i <= 5) {
+        let stars = "";
+        let j = 1;
+        while (j <= 20) {
+            if (i === 1 || i === 5 || j === 1 || j === 20) {
+                stars += "*";
+            } else {
+                stars += "&nbsp&nbsp";
+            }
+            j++;
+        }
+        document.write(stars + "<br>");
+        i++;
+    }
+
+    document.write("<hr>")
+
+    // Cách 2 (Giảng viên hướng dẫn)
+    for (let i = 1; i <= 5; i++) {
+        for (let j = 1; j <= 20; j++) {
+            if (i === 1 || i === 5 || j === 1 || j === 20) {
+                document.write("*");
+            } else {
+                document.write("&nbsp&nbsp");
+            }
+        }
+        document.write("<br>");
+    }
+
+</script>
+</body>
+</html>
