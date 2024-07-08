@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check similarity</title>
+</head>
+<body>
+<!--Viết một chương trình nhập vào 2 chuỗi, sau đó kiểm tra xem hai chuỗi có giống nhau hay không.-->
+<script>
+    let str1 = '';
+    let str2 = '';
+
+    let number1 = +prompt(`Input the quantity of element in 1st string here:`, '');
+    let number2 = +prompt(`Input the quantity of element in 2nd string here:`, '');
+
+    let i;
+    for (i = 0; i < number1; i++) {
+        str1[i] = +prompt(`Input element ${i} of 1st string here:`, '');
+    }
+
+    let j;
+    for (j = 0; j < number2; j++) {
+        str2[j] = +prompt(`Input element ${j} of 2nd string here:`, '');
+    }
+
+    let k;
+    if (number1 !== number2) {
+        document.write('These two strings are different.');
+    } else {
+        //kiểm tra mỗi phần tử xem có giống nhau không
+        let areSame = true; //khai báo biến areSame là true
+        for (k = 0; k < number1; k++) {
+            if (str1[k] !== str2[k]) {
+                areSame = false; //nếu phần tử k của str1 khác với phần tử k của str2 thì gán biến areSame là false
+                break; //dừng vòng lặp khi areSame được trả về true or false
+            }
+        }
+
+        if (areSame) { //if này vẫn trong phần else của if ngoài, nghĩa là if(true)
+            document.write('These two strings are the same.');
+        } else {
+            document.write('These two strings are different.');
+        }
+    }
+
+</script>
+</body>
+</html>

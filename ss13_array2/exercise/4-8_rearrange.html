@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rearrange element</title>
+</head>
+<body>
+<!--Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử.
+Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.-->
+
+<script>
+    let integers = [];
+
+    let i;
+    for (i = 0; i < 10; i++) {
+        integers[i] = +prompt(`Input element ${i} here:`, '');
+    }
+    document.write(`Integers array = [${integers}] <br>`);
+
+    integers.sort(function (a, b) {
+        return b - a;
+    });
+
+    document.write(`Rearranged array = [${integers}]`);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare parameters</title>
+</head>
+<body>
+<!--Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ hai,
+thị hộp thoại thông báo cho người dùng. Nếu giá trị của tham số thứ nhất nhỏ hơn hoặc bằng tham số thứ hai,
+trả về tổng của hai tham số.-->
+
+<script>
+    function compare(number1, number2) {
+        if (number1 <= number2) {
+            result = number1 + number2;
+            document.write(`The sum is: ${result}`);
+        } else {
+            alert(`1st number: ${number1} is bigger than 2nd number: ${number2}`);
+        }
+    }
+
+    let number1 = +prompt(`Input 1st number here: `, '');
+    let number2 = +prompt(`Input 2nd number here: `, '');
+
+    compare(number1, number2);
+
+</script>
+</body>
+</html>

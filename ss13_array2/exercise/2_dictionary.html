@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary</title>
+</head>
+<body>
+<br>
+<label> <input id="input" type="text"></label>
+<button type="button" onclick="trans()">Translate</button>
+<h3 id="output"></h3>
+
+<script>
+    let en = ["rain", "cloud", "sun", "wind", "lighting", "thunder"];
+    let vn = ["mưa", "mây", "mặt trời", "gió", "sét", "sấm"];
+
+    function trans() {
+        let translatedWord = document.getElementById("input").value;
+        if (en.indexOf(translatedWord) !== -1) {
+            //nếu index của từ đó trong mảng en khác -1, nghĩa là từ đó có nằm trong mảng
+            document.getElementById("output").innerText = vn[en.indexOf(translatedWord)];
+            //gán giá trị output chính là từ có index tương tự trong mảng vn
+        } else {
+            document.getElementById("output").innerText = "No result found."
+        }
+    }
+</script>
+</body>
+</html>

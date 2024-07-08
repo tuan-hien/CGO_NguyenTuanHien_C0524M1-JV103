@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find constellation 2</title>
+</head>
+<body>
+<!--CÁCH 2-->
+<br>
+<label> <input id="star" type="text" placeholder="Type the star's name here"></label>
+<button type="button" onclick="findConstellation()">Find Constellation</button>
+<p id="constellation"></p>
+
+<script>
+    let stars = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let constellations = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+    let star;
+
+    function findConstellation() {
+        star = document.getElementById("star").value;
+        if (stars.indexOf(star) !== -1) {
+            document.getElementById("constellation").innerText = `The constellation name: ${constellations[stars.indexOf(star)]}.`;
+        } else {
+            alert(`There's no star named ${star}.`);
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic-tac-toe</title>
+</head>
+<body>
+<!--Xây dựng game caro đơn giản sử dụng phần thực hành về tạo bàn cờ caro.
+Bàn cờ thay vì số 0 hiển thị mặc định bằng dấu (.).
+Có 2 người chơi lần lượt nhập vào là X và O.
+Mỗi lần giá trị được nhập vào thì bàn cờ thay đổi giá trị theo người chơi
+Xác định người chiến thằng nhập giá trị có 3 ô liên tiếp giống nhau.-->
+
+<h3>Tic-tac-toe WORK IN PROGRESS</h3>
+<p id="game"/>
+<button type="button" onclick="changeValue()">Change Value</button>
+
+<script>
+    let b = document.getElementById("game");
+
+    let board = [];
+    let data = "";
+    for (let i = 0; i < 5; i++) {
+        board[i] = new Array(".", ".", ".", ".", ".");
+    }
+
+    for (let i = 0; i < 5; i++) {
+        data += "<br/>";
+        for (let j = 0; j < 5; j++) {
+            data += board[i][j] + "&nbsp;&nbsp;";
+        }
+    }
+
+    data += "<br/><br/><button type=\"button\" onclick=\"changeValue()\">Change Value</button>"
+    b.innerHTML = data;
+
+    function changeValue() {
+        let positionX1 = prompt("X1: ");
+        let positionY1 = prompt("Y1: ");
+        let positionX2 = prompt("X2: ");
+        let positionY2 = prompt("Y2: ");
+
+        data = "";
+        board[positionX1][positionY1] = "x";
+        board[positionX2][positionY2] = "o";
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        data += "<br/><br/><button type=\"button\" onclick=\"changeValue()\">Change Value</button>"
+        b.innerHTML = "<hr/>" + data;
+    }
+</script>
+</body>
+</html>

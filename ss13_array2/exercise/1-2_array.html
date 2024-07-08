@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert "-"</title>
+</head>
+<body>
+<!--Viết một chương trình nhận một số nhập vào và chèn dấu (-) giữa 2  số chẵn.-->
+
+<script>
+    let inp = +prompt("Input your number here: ", "");
+    let str = inp.toString();
+
+    let result = [str[0]];
+    let i;
+    for (i = 0; i < str.length - 1; i++) {
+        if (str[i] % 2 === 0 && str[i + 1] % 2 === 0) {
+            result.push('-', str[i + 1]);
+        } else {
+            result.push(str[i + 1]);
+        }
+    }
+
+    document.write(result.join(''));
+
+</script>
+</body>
+</html>

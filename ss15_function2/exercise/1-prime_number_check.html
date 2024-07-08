@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime number check</title>
+</head>
+<body>
+<!--Hàm kiểm tra số nguyên tố-->
+<script>
+
+    function isPrime(num) {
+        if (num <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    }
+
+    let number = +prompt(`Input the number you want to check here: `, '');
+
+    while (number > 10000) {
+        number = +prompt(`Your number is too big! Re-input it here: `, '');
+    }
+    if (isPrime(number)) {
+        document.write(`${number} is a PRIME number.`);
+    } else {
+        document.write(`${number} is NOT a prime number.`);
+    }
+</script>
+
+</body>
+</html>

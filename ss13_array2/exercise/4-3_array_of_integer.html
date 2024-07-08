@@ -13,8 +13,12 @@
     let integers = [];
 
     let i;
+    let average = 0;
+    let sum = 0;
     for (i = 0; i < number; i++) {
         integers[i] = +prompt(`Input element ${i} here:`, '');
+        sum += integers[i];
+        average = sum / number;
     }
 
     let max = integers[0];
@@ -26,12 +30,6 @@
         }
     }
 
-    let average = 0;
-    let sum = 0;
-    for (i = 0; i < number; i++) {
-        sum += integers[i];
-        average = sum / number;
-    }
     document.write(`Integers array = [${integers}] <br>`);
     document.write(`Max is ${max} at position ${indexMax}  <br>`);
     document.write(`Average is ${average}`);

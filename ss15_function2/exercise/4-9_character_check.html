@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character check</title>
+</head>
+<body>
+<!--Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ,
+kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.
+Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1.-->
+
+<script>
+    let array = [];
+    let num = +prompt(`Input number of characters:`, '');
+
+    function checkCharacter() {
+        for (let i = 0; i < num; i++) {
+            array[i] = prompt(`Input character ${i} here:`, '');
+        }
+        document.write(`Inputted array = ["${array.join('", "')}"]. <br>`);
+    }
+
+    checkCharacter();
+
+    let any = prompt(`Input new character:`, '');
+    let count = 0;
+    let j;
+    for (j = 0; j < num; j++) {
+        if (any === array[j]) {
+            count += 1;
+        }
+    }
+
+    if (count > 0) {
+        document.write(`Times new character ${any} appears: ${count} time(s). <br>`);
+    } else {
+        document.write(`New character does not appear, its index is -1. <br>`);
+    }
+
+</script>
+</body>
+</html>
