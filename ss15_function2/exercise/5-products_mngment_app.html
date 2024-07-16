@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product management app</title>
+    <style>
+        button {
+            background-color: forestgreen;
+            border-color: transparent;
+            color: white;
+        }
+
+        body {
+            font-family: Tahoma, sans-serif;
+        }
+
+        .th1 {
+            text-align: left;
+        }
+
+        .th2 {
+            color: red;
+            font-size: 14px
+        }
+
+        .td1 {
+            width: 200px;
+            height: 30px;
+        }
+
+        .td2 {
+            width: 80px;
+            height: 30px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<!--Ứng dụng quản lý sản phẩm có các chức năng sau:-->
+<!--Hiển thị danh sách sản phẩm-->
+<!--Có thể thêm một sản phẩm mới vào danh sách-->
+<!--Có thể sửa tên của sản phẩm trong danh sách-->
+<!--Có thể xoá một sản phẩm khỏi danh sách-->
+
+<h3>Add new product</h3>
+<label> <input id="productName" type="text" placeholder="New product">
+    <button type="button" onclick="addProduct()">Add</button>
+</label>
+<h3>Display all product</h3>
+
+<table>
+    <thead>
+    <tr>
+        <th class="th1">Product name</th>
+        <th colspan="2"></th>
+        <th id="total" class="th2"></th>
+    </tr>
+    </thead>
+    <tbody id="body">
+    </tbody>
+</table>
+<script>
+    let arrProducts = ["Sony Xperia", "Samsung Galaxy", "Iphone", "Nokia"];
+    let i;
+
+    function displayProducts(arrProducts) {
+        let str = "";
+        for (i = 0; i < arrProducts.length; i++) {
+            str += `<tr>
+                        <td class="td1" data-index="${i}"
+                            onmouseover="changeTextColor1(${i})" onmouseout="changeTextColor2(${i})">
+                            ${arrProducts[i]}
+                        </td>
+                        <td class="td2"><button onclick="editProduct(${i})">Edit</button></td>
+                        <td class="td2"><button onclick="deleteProduct(${i})">Delete</button></td>
+                    </tr>`;
+        }
+        document.getElementById("total").innerText = arrProducts.length + ` product(s)`;
+        document.getElementById("body").innerHTML = str;
+    }
+
+    displayProducts(arrProducts);
+
+    let productName;
+    //bắt buộc phải khai báo ngoài function, khai báo bên trong function thì webstorm ko nhận là biến (ko đổi màu chữ)
+    function addProduct() {
+        productName = document.getElementById("productName").value;
+        arrProducts.push(productName);
+        document.getElementById("productName").value = "";
+        displayProducts(arrProducts);
+    }
+
+    let newProductName;
+    function editProduct(i) {
+        newProductName = prompt(`Edit the name here:`, `${arrProducts[i]}`);
+        arrProducts[i] = newProductName;
+        displayProducts(arrProducts);
+    }
+
+    function deleteProduct(i) {
+        arrProducts.splice(i, 1);
+        displayProducts(arrProducts);
+    }
+
+    let product;
+    function changeTextColor1(i) {
+        product = document.querySelector(`[data-index="${i}"]`);
+        product.style.color = "darkblue";
+        product.style.fontWeight = "bold";
+    }
+
+    function changeTextColor2(i) {
+        product = document.querySelector(`[data-index="${i}"]`);
+        product.style.color = "black";
+        product.style.fontWeight = "normal";
+    }
+
+</script>
+</body>
+</html>
