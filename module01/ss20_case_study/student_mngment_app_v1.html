@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management v1</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 5px;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            margin: 0;
+        }
+
+        h1 {
+            margin-top: 3px;
+            padding: 0;
+            background-color: lightseagreen;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .table1 {
+            width: 35%;
+            float: left;
+            border: 1px solid black;
+        }
+
+        .td1 {
+            border: 1px solid black;
+            text-align: center;
+            font-weight: bold;
+            background-color: mintcream;
+            padding: 6px;
+        }
+
+        .table2 {
+            width: 55%;
+            float: right;
+            background-color: lightcyan;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .td2 {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<img src="banner.jpg" alt="banner">
+<h1>QUẢN LÝ HỌC VIÊN</h1>
+<input type="hidden" id="editIndex" value="-1">
+<table class="table1">
+    <tr>
+        <td class="td1" colspan="2" style="color: darkred; font-size: 25px; background-color: dodgerblue ">Thông tin học
+            viên
+        </td>
+    </tr>
+    <tr>
+        <td class="td1">ID</td>
+        <td class="td1"><label><input id="inputID" type="number"></label></td>
+    </tr>
+    <tr>
+        <td class="td1">Họ tên</td>
+        <td class="td1"><label><input id="inputName" type="text"></label></td>
+    </tr>
+    <tr>
+        <td class="td1">Ngày sinh</td>
+        <td class="td1"><label><input id="inputDOB" type="text"></label></td>
+    </tr>
+    <tr>
+        <td class="td1">Giới tính</td>
+        <td class="td1"><label><input id="inputGender" type="text"></label></td>
+    </tr>
+    <tr>
+        <td class="td1">Lớp</td>
+        <td class="td1"><label><input id="inputCategory" type="text"></label></td>
+    </tr>
+    <tr>
+        <td class="td1">Ảnh</td>
+        <td class="td1"><label><input id="inputPhoto" type="file" accept="image/*"></label></td>
+    </tr>
+    <tr>
+        <td class="td1"></td>
+        <td class="td1">
+            <button id="addStudent" onclick="addStudent()">Add</button>
+            <button id="saveStudent">Save</button>
+        </td>
+    </tr>
+</table>
+
+<table class="table2">
+    <thead>
+    <tr>
+        <th style="font-size: 30px" colspan="7">DANH SÁCH HỌC VIÊN</th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>Họ tên</th>
+        <th>Ngày sinh</th>
+        <th>Giới tính</th>
+        <th>Lớp</th>
+        <th>Ảnh</th>
+        <th>Tuỳ chọn</th>
+    </tr>
+    </thead>
+    <tbody id="body2">
+    </tbody>
+</table>
+
+<script>
+    let students = [{
+        id: "011",
+        name: "Tạ Thị Thuỷ",
+        dob: "07/02/2002",
+        gender: "Nữ",
+        category: "USSH112",
+        photo: "student0.jpg"
+    }, {
+        id: "012",
+        name: "Lương Khánh",
+        dob: "07/07/2002",
+        gender: "Nữ",
+        category: "USSK122",
+        photo: "student1.jpg"
+    }];
+
+    function displayStudentList() {
+        let str = "";
+        for (let i = 0; i < students.length; i++) {
+            str += `<tr>
+                        <td class="td2">${students[i].id}</td>
+                        <td class="td2">${students[i].name}</td>
+                        <td class="td2">${students[i].dob}</td>
+                        <td class="td2">${students[i].gender}</td>
+                        <td class="td2">${students[i].category}</td>
+                        <td class="td2">${students[i].photo ? `<img src="${students[i].photo}" height="90px"` : ''}</td>
+                        <td class="td2">
+                            <button onclick="deleteStudent(${i})">Delete</button>
+                            <button onclick="editStudent(${i})">Edit</button>
+                        </td>
+                    </tr>`;
+        }
+        document.getElementById("body2").innerHTML = str;
+    }
+
+    displayStudentList();
+
+    function clearInput() {
+        document.getElementById('inputID').value = '';
+        document.getElementById('inputName').value = '';
+        document.getElementById('inputDOB').value = '';
+        document.getElementById('inputGender').value = '';
+        document.getElementById('inputCategory').value = '';
+        document.getElementById('inputPhoto').value = '';
+    }
+
+    function addStudent() {
+        //bổ sung tính năng kiểm tra ID
+        let newlyInputID = document.getElementById('inputID').value;
+        for (let i = 0; i < students.length; i++) {
+            if (newlyInputID === students[i].id) {
+                alert("Đã tồn tại sinh viên với ID này");
+                clearInput();
+                return; //thêm return để tránh việc hàm tiếp tục chạy khi ID trùng lặp
+            }
+        }
+
+        let file = document.getElementById('inputPhoto').files[0];
+        let reader = new FileReader();
+        reader.onloadend = function () {
+            let newStudent = {
+                id: document.getElementById('inputID').value,
+                name: document.getElementById('inputName').value,
+                dob: document.getElementById('inputDOB').value,
+                gender: document.getElementById('inputGender').value,
+                category: document.getElementById('inputCategory').value,
+                photo: reader.result
+            };
+            students.push(newStudent);
+            clearInput();
+            displayStudentList();
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            let newStudent = {
+                id: document.getElementById('inputID').value,
+                name: document.getElementById('inputName').value,
+                dob: document.getElementById('inputDOB').value,
+                gender: document.getElementById('inputGender').value,
+                category: document.getElementById('inputCategory').value,
+                photo: ""
+            };
+            students.push(newStudent);
+            clearInput();
+            displayStudentList();
+        }
+    }
+
+    function editStudent(i) {
+        let editedStudent = students[i];
+        document.getElementById('inputID').value = editedStudent.id;
+        document.getElementById('inputName').value = editedStudent.name;
+        document.getElementById('inputDOB').value = editedStudent.dob;
+        document.getElementById('inputGender').value = editedStudent.gender;
+        document.getElementById('inputCategory').value = editedStudent.category;
+        document.getElementById('inputPhoto').scr = editedStudent.photo;
+        document.getElementById("editIndex").value = i; //Lưu stt của phần tử đang được edit
+    }
+
+    function saveStudent() {
+        let editIndex = document.getElementById("editIndex").value;
+        if (editIndex === -1) return;
+
+        let file = document.getElementById('inputPhoto').files[0];
+        let reader = new FileReader();
+        reader.onloadend = function () {
+            let savedStudent = {
+                id: document.getElementById('inputID').value,
+                name: document.getElementById('inputName').value,
+                dob: document.getElementById('inputDOB').value,
+                gender: document.getElementById('inputGender').value,
+                category: document.getElementById('inputCategory').value,
+                photo: reader.result
+            };
+            students.splice(editIndex, 1, savedStudent);
+            clearInput();
+            document.getElementById("editIndex").value = -1;
+            displayStudentList();
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            let savedStudent = {
+                id: document.getElementById('inputID').value,
+                name: document.getElementById('inputName').value,
+                dob: document.getElementById('inputDOB').value,
+                gender: document.getElementById('inputGender').value,
+                category: document.getElementById('inputCategory').value,
+                photo: students[editIndex].photo
+            };
+            students.splice(editIndex, 1, savedStudent);
+            clearInput();
+            document.getElementById("editIndex").value = -1;
+            displayStudentList();
+        }
+    }
+    document.getElementById('saveStudent').onclick = saveStudent;
+
+    function deleteStudent(i) {
+        let clickOK = confirm(`Xoá sinh viên ${students[i].name} có ID là ${students[i].id}?`);
+        if (clickOK) {
+            students.splice(i, 1);
+            displayStudentList();
+        } else {
+            displayStudentList();
+        }
+    }
+
+</script>
+</body>
+</html>

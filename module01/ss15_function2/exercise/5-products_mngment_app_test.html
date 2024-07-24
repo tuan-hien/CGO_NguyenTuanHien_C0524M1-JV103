@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product management app test</title>
+</head>
+<body>
+<h3>Add new product</h3>
+<label><input id="newProduct" placeholder="New product"></label>
+<button id="addButton" onclick="addProduct()">Add</button>
+<!--Create an hidden input field to store the index of product being edited-->
+<input type="hidden" id="editIndex" value="-1">
+<h3>Display all products</h3>
+</body>
+<table>
+    <thead>
+    <tr>
+        <th>Product name</th>
+        <th colspan="2"></th>
+        <th id="total"></th>
+    </tr>
+    </thead>
+    <tbody id="body"></tbody>
+</table>
+
+<script>
+    let arrProducts = ["Sony Xperia", "Samsung Galaxy", "Nokia 6", "Xiaomi"];
+
+    function displayProducts(arrProducts) {
+        let str = "";
+        for (let i = 0; i < arrProducts.length; i++) {
+            str += `<tr>
+              <td>${arrProducts[i]}</td>
+              <td><button onclick="editProduct(${i})">Edit</button></td>
+              <td><button onclick="deleteProduct(${i})">Delete</button></td>
+            </tr>`;
+        }
+        document.getElementById("total").innerText = arrProducts.length + ` product(s)`;
+        document.getElementById("body").innerHTML = str;
+    }
+
+    displayProducts(arrProducts);
+
+    // modify function addProduct to check if a product is being edited or else add new product
+    function addProduct() {
+        let newProduct = document.getElementById("newProduct").value;
+        let editIndex = document.getElementById("editIndex").value;
+        // if value of editIndex = -1, meaning the the product in input field is not an element, then add to array
+        if (editIndex == -1) {
+            arrProducts.unshift(newProduct);
+        } else {
+            arrProducts[editIndex] = newProduct;
+            document.getElementById("editIndex").value = -1;
+            document.getElementById("addButton").innerText = "Add";
+        }
+        document.getElementById("newProduct").value = "";
+        displayProducts(arrProducts);
+    }
+
+    function editProduct(i) {
+        document.getElementById("newProduct").value = arrProducts[i];
+        document.getElementById("editIndex").value = i;
+        document.getElementById("addButton").innerText = "Update";
+        document.getElementById("newProduct").focus();
+    }
+
+    function deleteProduct(i) {
+        arrProducts.splice(i, 1);
+        displayProducts(arrProducts);
+    }
+
+
+</script>
+
+</html>
