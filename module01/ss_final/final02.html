@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 2</title>
+</head>
+<body>
+<script>
+    function countCapitals(str) {
+        let count = 0;
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === str[i].toUpperCase() && isNaN(parseInt(str[i]))) {
+                count++;
+            }
+        }
+        if (count === 0) {
+            document.write(`The Strings is not contain upper char.`);
+        } else {
+            document.write(`The number of capital character is: ${count}.`);
+        }
+    }
+
+    let str = prompt('Input your string of characters here: ', '');
+
+    countCapitals(str);
+
+</script>
+</body>
+</html>

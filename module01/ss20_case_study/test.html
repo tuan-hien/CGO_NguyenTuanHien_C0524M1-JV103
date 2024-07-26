@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disable Button on Checkbox Click</title>
+</head>
+<body>
+<input type="checkbox" id="myCheckbox" /> Check me to disable the button
+<br/>
+<button id="myButton">Submit</button>
+
+<script>
+    // Lấy phần tử checkbox và button từ DOM
+    var checkbox = document.getElementById('myCheckbox');
+    var button = document.getElementById('myButton');
+
+    // Thêm sự kiện lắng nghe cho checkbox
+    // checkbox.addEventListener('change', function() {
+    //     if (checkbox.checked) {
+    //         button.disabled = true; // Vô hiệu hóa button
+    //     } else {
+    //         button.disabled = false; // Kích hoạt lại button
+    //     }
+    // });
+
+    if (checkbox.checked) {
+        button.disabled = true;
+    } else {
+        button.disabled = false;
+    }
+</script>
+
+</body>
+</html>

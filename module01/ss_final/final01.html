@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 1</title>
+</head>
+<body>
+<script>
+    let n = +prompt('Input the number of elements here: ', '');
+    while (n > 20 || n <= 0) {
+        n = +prompt('Not valid, re-input it here: ', '');
+    }
+
+    let numbers = [];
+    for (let i = 0; i < n; i++) {
+        numbers[i] = +prompt(`Input element ${i} here: `, '');
+    }
+
+    let sumEven = 0;
+    let sumOdd = 0;
+    for (let i = 0; i < n; i++) {
+        if (numbers[i] % 2 === 0) {
+            sumEven += numbers[i];
+        } else {
+            sumOdd += numbers[i];
+        }
+    }
+
+    let subtract = sumEven - sumOdd;
+
+    document.write(subtract);
+
+</script>
+</body>
+</html>

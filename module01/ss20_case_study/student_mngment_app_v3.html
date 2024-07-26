@@ -193,7 +193,7 @@
         document.getElementById('inputGender').value = editStudent.gender;
         document.getElementById('inputCategory').value = editStudent.category;
         // document.getElementById('inputPhoto').files = editStudent.category;
-        // do thuộc tính là .files của type=file, nên ở function add, sẽ ko gọi được đường dẫn --> bỏ dòng code trên
+        // Js ko được phép tự động truy cập vào files trong máy, bắt buộc phải qua 1 click
         document.getElementById("editIndex").value = i;
     }
 
@@ -218,7 +218,7 @@
         displayStudentList();
     }
 
-    document.getElementById('saveStudent').onclick = saveStudent;
+    // document.getElementById('saveStudent').onclick = saveStudent;
 
     function deleteStudent(i) {
         let clickOK = confirm(`Xoá sinh viên ${students[i].name} có ID là ${students[i].id}?`);

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 3</title>
+</head>
+<body>
+<script>
+    function isPrime(num) {
+        if (num <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    }
+
+    function primeDisplay(numbers) {
+        let temp = [];
+        for (let i = 0; i < numbers.length; i++) {
+            if (isPrime(numbers[i])) {
+                temp.push(numbers[i]);
+            }
+        }
+        temp.sort(function (a, b) {
+            return a - b;
+        });
+        document.write(`Prime number array = [${temp.join(', ')}].`)
+    }
+
+    let numOfPrime = +prompt('Input the number of element: ', '');
+    console.log(numOfPrime);
+    let numbers = [];
+    for (let j = 0; j < numOfPrime; j++) {
+        numbers[j] = prompt(`Input element ${j} here: `, '');
+    }
+    document.write(`Number array = [${numbers.join(', ')}]. <br>`);
+
+    primeDisplay(numbers);
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 4</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 5px;
+        }
+
+        h1 {
+            margin-top: 3px;
+            padding: 0;
+            background-color: lightseagreen;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        table {
+            width: 50%;
+            background-color: lightcyan;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        td {
+            height: max-content;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th colspan="7" style="font-size: 30px">PRODUCT LIST</th>
+    </tr>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody id="body">
+    </tbody>
+</table>
+
+<script>
+    class Phones {
+        constructor(code, product, manufacturer, price) {
+            this.code = code;
+            this.product = product;
+            this.manufacturer = manufacturer;
+            this.price = price;
+        }
+    }
+
+    let phone1 = new Phones('1', 'Iphone11', 'Apple', '1000');
+
+    let phones = [];
+    phones.push(phone1);
+
+    function displayProductList() {
+        let str = "";
+        for (let i = 0; i < phones.length; i++) {
+            str += `<tr>
+                        <td>${phones[i].code}</td>
+                        <td>${phones[i].product}</td>
+                        <td>${phones[i].manufacturer}</td>
+                        <td>${phones[i].price}</td>
+                    </tr>`;
+        }
+        document.getElementById("body").innerHTML = str;
+    }
+
+    displayProductList();
+
+</script>
+</body>
+</html>
