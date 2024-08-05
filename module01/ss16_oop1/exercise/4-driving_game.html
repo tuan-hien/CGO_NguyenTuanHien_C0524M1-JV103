@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driving game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="400px" height="650px"></canvas>
+<script>
+    let ctx = document.getElementById('canvas').getContext('2d');
+    let carImage = new Image();
+    carImage.src = 'formula-1-1.png';
+
+    let car = {
+        x: canvas.width / 2 - 25,
+        y: canvas.height - 120,
+        width: 55,
+        height: 100,
+        speed: 10,
+        dx: 0, //tốc độ di chuyển theo trục x
+        dy: 0, //tốc độ di chuyển theo trục y
+        boost: 0
+    };
+
+    let obstacles = [];
+    let rewards = [];
+    let score = 0;
+    let gameOver = false;
+
+    function drawCar() {
+        ctx.drawImage(carImage, car.x, car.y, car.width, car.height);
+    }
+
+    function drawObstacles() {
+        ctx.fillStyle = 'red';
+        obstacles.forEach(obstacle => {
+           ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        });
+    }
+
+    function drawRewards() {
+        ctx.fillStyle = 'green';
+        rewards.forEach(reward => {
+            ctx.beginPath();
+            ctx.arc(reward.x, reward.y, reward.radius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.closePath();
+        });
+    }
+
+    function update() {
+        if (gameOver) return;
+        car.x += car.dx;
+        car.y += car.dy + car.boost;
+
+        if (car.x < 0) car.x = 0;
+        if (car.x + car.width > canvas.width) car.x = canvas.width - car.width;
+        if (car.y < 0) car.y = 0;
+        if (car.y + car.height > canvas.height) car.y = canvas.height - car.height;
+
+        obstacles.forEach(obstacle => {
+            if (car.x < obstacle.x + obstacle.width &&
+                car.x + car.width > obstacle.x &&
+                car.y < obstacle.y + obstacle.height &&
+                car.y + car.height > obstacle.y) {
+                gameOver = true;
+                alert(`Game over! Your score is ${score}.`);
+            }
+        });
+
+        rewards.forEach((reward, index) => {
+            if (car.x < reward.x + reward.radius &&
+                car.x + car.width > reward.x - reward.radius &&
+                car.y < reward.y + reward.radius &&
+                car.y + car.height > reward.y - reward.radius) {
+                score += 10;
+                rewards.splice(index, 1);
+            }
+        });
+
+        obstacles.forEach(obstacle => {
+            obstacle.y += 4;
+            //Duyệt qua tất cả các chướng ngại vật và di chuyển chúng xuống dưới với tốc độ cố định.
+        });
+
+        rewards.forEach(reward => {
+            reward.y += Math.floor(Math.random() * 50);
+            //Duyệt qua tất cả các phần thưởng và di chuyển chúng xuống dưới với tốc độ cố định.
+            });
+
+        obstacles = obstacles.filter(obstacle => obstacle.y < canvas.height);
+        rewards = rewards.filter(reward => reward.y <canvas.height);
+        //kí hiệu '=>' là arrow function
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawCar();
+        drawObstacles();
+        drawRewards();
+
+        ctx.fillStyle = 'black';
+        ctx.font = '20px Arial';
+        ctx.fillText(`Score: ${score}`, 10, 20);
+    }
+
+    function loop() {
+        update();
+        draw();
+        if (!gameOver) requestAnimationFrame(loop);
+    }
+
+    function spawnObstacle() {
+        width = Math.floor(Math.random() * 100);
+        height = Math.floor(Math.random() * 100);
+        const x = Math.random() * (canvas.width - width);
+        obstacles.push({ x, y: -height, width, height });
+        if (!gameOver) setTimeout(spawnObstacle, 2000);
+    }
+
+    function spawnReward() {
+        const radius = 10;
+        const x = Math.random() * (canvas.width - radius * 2) + radius;
+        rewards.push({ x, y: -radius, radius });
+        if (!gameOver) setTimeout(spawnReward, 3000);
+    }
+
+    function handleKeydown(e) {
+        switch (e.key) {
+            case 'ArrowLeft':
+                car.dx = -car.speed;
+                break;
+            case 'ArrowRight':
+                car.dx = car.speed;
+                break;
+            // case 'ArrowUp':
+            //     car.dy = -car.speed;
+            //     break;
+            // case 'ArrowDown':
+            //     car.dy = car.speed;
+            //     break;
+            case 'Control':
+                car.boost = 2;
+                break;
+        }
+    }
+
+    function handleKeyup(e) {
+        switch (e.key) {
+            case 'ArrowLeft':
+            case 'ArrowRight':
+                car.dx = 0;
+                break;
+            // case 'ArrowUp':
+            // case 'ArrowDown':
+            //     car.dy = -2;
+            //     break;
+            case 'Control':
+                car.boost = 0;
+                break;
+        }
+    }
+
+    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('keyup', handleKeyup);
+
+    carImage.onload = () => {
+        spawnObstacle();
+        spawnReward();
+        loop();
+    };
+
+</script>
+</body>
+</html>

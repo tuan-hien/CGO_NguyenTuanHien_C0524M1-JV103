@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile class</title>
+</head>
+<body>
+<script>
+    class Mobiles {
+        constructor(name) {
+            this.name = name;
+            this.checkIsOn = false;
+            this.battery = 10;
+            this.draftSMS = "";
+            this.inbox = [];
+            this.sentSMS = [];
+        }
+        checkIsOn() {
+            return this.checkIsOn;
+        }
+        turnOn() {
+            if(!this.checkIsOn) {
+                this.checkIsOn = true;
+                console.log(`${this.name} is on.`);
+                // console.log(`${this.name}'s battery is ${this.battery}.`);
+            } else {
+                console.log(`${this.name} is already on.`);
+            }
+        }
+        turnOff() {
+            if(this.checkIsOn) {
+                this.checkIsOn = false;
+                // console.log(`${this.name}'s battery is ${this.battery}.`);
+                console.log(`${this.name} is off.`);
+            } else {
+                console.log(`${this.name} is already off.`);
+            }
+        }
+        charge() {
+            if(this.checkIsOn) {
+                this.battery = 100;
+                console.log(`${this.name}'s battery is full.`);
+            } else {
+                console.log(`Turn ${this.name} on before charging.`);
+            }
+        }
+        composeSMS(message) {
+            if(this.checkIsOn) {
+                if(this.battery < 10) {
+                    console.log(`${this.name}'s battery low. Charge it.`);
+                }
+                this.draftSMS = message;
+                this.battery--;
+                console.log(`Finish composing message on ${this.name}.`);
+                // console.log(`${this.name}'s battery is ${this.battery}.`);
+            } else {
+                console.log(`Turn ${this.name} on before composing SMS.`);
+            }
+        }
+        receiveSMS(message) {
+            if(this.checkIsOn) {
+                if(this.battery < 10) {
+                    console.log(`${this.name}'s battery low. Charge it.`);
+                }
+                this.inbox.push(message);
+                this.battery--;
+                console.log(`Message received.`)
+                // console.log(`${this.name}'s battery is ${this.battery}.`);
+            } else {
+                console.log(`Turn ${this.name} on before receiving SMS.`);
+            }
+        }
+        sendSMS(receiver) {
+            if(this.checkIsOn && this.draftSMS !== "") {
+                if(this.battery < 10) {
+                    console.log(`${this.name}'s battery low. Charge it.`);
+                }
+                receiver.receiveSMS(this.draftSMS);
+                this.sentSMS.push(this.draftSMS);
+                this.draftSMS = "";
+                this.battery--;
+                console.log(`Message received.`)
+                // console.log(`${this.name}'s battery is ${this.battery}.`);
+            } else {
+                console.log(`Turn ${this.name} on before sending SMS.`);
+            }
+        }
+        viewInbox() {
+            if(this.checkIsOn) {
+                if(this.battery < 10) {
+                    console.log(`${this.name}'s battery low. Charge it.`);
+                }
+                console.log(`${this.name}'s inbox is: ${this.inbox}.`);
+                this.battery--;
+                // console.log(`${this.name}'s battery is ${this.battery}.`);
+            } else {
+                console.log(`Turn ${this.name} on before viewing Inbox.`);
+            }
+        }
+        viewSentSMS() {
+            if(this.checkIsOn) {
+                if(this.battery < 10) {
+                    console.log(`${this.name}'s battery low. Charge it.`);
+                }
+                console.log(`${this.name}'s sent messages: ${this.sentSMS.join(', ')}.`);
+                this.battery--;
+                // console.log(`${this.name}'s battery is ${this.battery}.`);
+            } else {
+                console.log(`Turn ${this.name} on before viewing SentSMS.`);
+            }
+        }
+    }
+
+    let nokia = new Mobiles('Nokia');
+    let iPhone = new Mobiles('iPhone');
+
+    nokia.turnOn();
+    nokia.composeSMS("Fake phone.");
+    iPhone.turnOn();
+    nokia.sendSMS(iPhone);
+    iPhone.viewInbox();
+    nokia.viewSentSMS();
+    nokia.charge();
+    iPhone.charge();
+    iPhone.turnOff();
+    nokia.turnOff();
+    nokia.turnOn();
+    iPhone.turnOn();
+    iPhone.composeSMS("You're obsolete.");
+    iPhone.sendSMS(nokia);
+    nokia.viewInbox();
+    nokia.composeSMS("Fuk you.");
+    nokia.sendSMS(iPhone);
+    iPhone.receiveSMS("unknown sender");
+    iPhone.viewInbox();
+    nokia.viewSentSMS();
+
+</script>
+
+</body>
+</html>

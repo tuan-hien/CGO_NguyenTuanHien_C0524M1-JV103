@@ -6,29 +6,23 @@
     <title>Disable Button on Checkbox Click</title>
 </head>
 <body>
-<input type="checkbox" id="myCheckbox" /> Check me to disable the button
-<br/>
-<button id="myButton">Submit</button>
 
 <script>
-    // Lấy phần tử checkbox và button từ DOM
-    var checkbox = document.getElementById('myCheckbox');
-    var button = document.getElementById('myButton');
-
-    // Thêm sự kiện lắng nghe cho checkbox
-    // checkbox.addEventListener('change', function() {
-    //     if (checkbox.checked) {
-    //         button.disabled = true; // Vô hiệu hóa button
-    //     } else {
-    //         button.disabled = false; // Kích hoạt lại button
-    //     }
-    // });
-
-    if (checkbox.checked) {
-        button.disabled = true;
-    } else {
-        button.disabled = false;
+    function simpleArraySum(ar) {
+        let sum = 0;
+        for (let i = 0; i < ar.length; i++) {
+            sum += ar[i];
+        }
+        document.write(sum);
     }
+
+    let n = +prompt('Input number of elements here: ','');
+    let ar = [];
+    for (let i = 0; i < n; i++) {
+        ar[i] = +prompt(`Input element ${i} here: `, '');
+    }
+
+    simpleArraySum(ar);
 </script>
 
 </body>

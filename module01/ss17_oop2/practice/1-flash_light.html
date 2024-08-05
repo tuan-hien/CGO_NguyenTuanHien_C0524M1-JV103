@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flash light</title>
+</head>
+<body>
+<script>
+    class Battery {
+        constructor(energy) {
+            this.energy = energy;
+        }
+        getEnergy() {
+            return this.energy;
+        }
+        setEnergy(energy) {
+            this.energy = energy;
+        }
+        decreaseEnergy() {
+            if (this.energy > 0) {
+                this.energy--;
+            }
+        }
+    }
+
+    class FlashLight {
+        constructor(battery) {
+            this.status = false;
+            this.battery = battery;
+        }
+        setBattery(battery) {
+            return this.battery;
+        }
+        getBatteryInfo() {
+            return this.battery.getEnergy();
+        }
+        turnOn() {
+            if (this.getBatteryInfo() > 0) {
+                this.status = true;
+                this.battery.decreaseEnergy();
+                console.log(`Flashlight is on. Battery is ${this.getBatteryInfo()}.`)
+            } else {
+                console.log(`Battery is out of energy.`);
+                this.status = false;
+            }
+        }
+        light() {
+            if (this.status) {
+                console.log(`lighting ${this.status}`);
+                alert(`Lighting.`);
+                this.battery.decreaseEnergy();
+            } else {
+                alert(`Not lighting.`);
+                console.log(`not lighting ${this.status}`);
+            }
+        }
+        turnOff() {
+            this.status = false;
+            console.log(`Flashlight is off.`);
+        }
+    }
+
+    let battery = new Battery(45);
+    battery.setEnergy(65);
+    let flash = new FlashLight(battery);
+
+    flash.setBattery(65);
+    console.log(battery.energy);
+
+    flash.turnOn();
+    // flash.light();
+    flash.turnOff();
+</script>
+</body>
+</html>

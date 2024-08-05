@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle class</title>
+</head>
+<body>
+<canvas id="canvas" width="1400px" height="640px" style="border: 1px solid #d3d3d3;"></canvas>
+<script>
+    class Rectangle {
+        constructor(length, width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        getArea() {
+            return this.length * this.width;
+        }
+
+        getPerimeter() {
+            return (this.length + this.width) * 2;
+        }
+
+        setLength(length) {
+            this.length = length;
+        }
+
+        setWidth(width) {
+            this.width = width;
+        }
+    }
+
+    function getRandomHex() {
+        return Math.floor(Math.random()*255);
+    }
+
+    function getRandomColor() {
+        let red = getRandomHex();
+        let blue = getRandomHex();
+        let green = getRandomHex();
+        return `rgb( ${red},${blue},${green})`;
+    }
+
+    // Cách 1: Text và rectangle vẫn vượt ra ngoài viền canvas
+    // function createRect() {
+    //     let ctx = document.getElementById("canvas").getContext("2d");
+    //     let length = Math.floor(Math.random()*200);
+    //     let width = Math.floor(Math.random()*150);
+    //     let color = getRandomColor();
+    //     let x = Math.floor(Math.random() * window.innerWidth);
+    //     let y = Math.floor(Math.random() * window.innerHeight);
+    //     let rect = new Rectangle(length, width);
+    //     ctx.fillStyle = color;
+    //     ctx.fillRect(x, y, rect.length, rect.width);
+    //     ctx.font = "16px Arial";
+    //     ctx.textAlign = "center";
+    //     ctx.textBaseline = "middle";
+    //     let temp1 = rect.getArea();
+    //     let temp2 = rect.getPerimeter();
+    //     let area = temp1.toLocaleString();
+    //     let perimeter = temp2.toLocaleString()
+    //     ctx.fillText(`Perimeter = (${length} + ${width}) * 2 = ${perimeter}`, x, y - 35);
+    //     ctx.fillText(`Area = ${length} * ${width} = ${area}`, x, y - 10);
+    // }
+
+    // Cách 2: Ít xảy ra trường hợp text và rectangle vượt ra ngoài viền canvas
+    function createRect() {
+        let ctx = document.getElementById("canvas").getContext("2d");
+
+        // Get maximum dimensions based on canvas size
+        let maxWidth = canvas.width;
+        let maxHeight = canvas.height;
+
+        // Random rectangle dimensions
+        let length = Math.floor(Math.random() * 200);
+        let width = Math.floor(Math.random() * 150);
+
+        // Ensure the rectangle stays within canvas boundaries
+        let x = Math.floor(Math.random() * (maxWidth - length));
+        let y = Math.floor(Math.random() * (maxHeight - width));
+
+        let color = getRandomColor();
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, length, width);
+
+        // Set font properties for the text
+        ctx.font = "16px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "black"; // Text color
+
+        // Calculate text positions, ensuring they are inside the canvas
+        let textX = x + length / 2;
+        let textYArea = y - 10; // Position for area text
+        let textYPerimeter = y - 35; // Position for perimeter text
+
+        // Ensure text is within canvas boundaries
+        if (textYArea < 0) textYArea = y + width + 10; // Place text below if above canvas
+        if (textYPerimeter < 0) textYPerimeter = y + width + 30; // Place text below if above canvas
+
+        // Calculate area and perimeter
+        let area = length * width;
+        let perimeter = 2 * (length + width);
+
+        // Draw text on the canvas
+        ctx.fillText(`Area = ${length} * ${width} = ${area}`, textX, textYArea);
+        ctx.fillText(`Perimeter = (${length} + ${width}) * 2 = ${perimeter}`, textX, textYPerimeter);
+    }
+
+    createRect();
+
+</script>
+</body>
+</html>

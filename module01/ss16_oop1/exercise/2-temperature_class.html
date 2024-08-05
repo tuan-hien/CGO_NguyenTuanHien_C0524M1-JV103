@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature class</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        constructor(tempC) {
+            this.tempC = tempC;
+        }
+        convertToF() {
+            return this.tempC * 1.8 + 32;
+        }
+
+        convertToK() {
+            return this.tempC + 273;
+        }
+    }
+    // Generate a random temperature between -100 and 100 degrees Celsius
+    let x = Math.floor(Math.random() * 201) - 100;
+    let temp = new Temperature(x);
+    document.write(`${x}°C is ${Math.ceil(temp.convertToF())}°F and ${temp.convertToK()}°K.`)
+    console.log(`${temp.convertToF()} and ${temp.convertToK()}`);
+
+</script>
+
+</body>
+</html>
