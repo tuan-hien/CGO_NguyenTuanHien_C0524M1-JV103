@@ -2,7 +2,7 @@ package ss01_introduction_to_java.exercise;
 
 import java.util.Scanner;
 
-public class NumberInWords {
+public class _2_NumberInWords {
     public static void main(String[] args) {
         Scanner inputNumber = new Scanner(System.in);
         System.out.print("Enter a number: ");

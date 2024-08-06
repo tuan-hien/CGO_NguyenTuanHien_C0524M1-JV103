@@ -2,7 +2,7 @@ package ss01_introduction_to_java.exercise;
 
 import java.util.Scanner;
 
-public class CurrencyConverter {
+public class _3_CurrencyConverter {
     public static void main(String[] args) {
         Scanner inputCurrency = new Scanner(System.in);
         System.out.println("Enter your USD amount here:");
