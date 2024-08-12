@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class _5_MinInArray {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int number;
-        System.out.print("Enter the number: ");
-        number = scanner.nextInt();
-        int[] arr = new int[number];
+        int size;
+        System.out.print("Enter the size: ");
+        size = scanner.nextInt();
+        int[] arr = new int[size];
 
         for (int i = 0; i < arr.length; i++) {
             System.out.print("Enter element " + (i + 1) + ": ");
