@@ -1,6 +1,6 @@
 package ss06_inheritance.practice._4_Shape;
 
-public class Circle extends Shape {
+public class Circle extends Shape{
     private double radius = 1.0;
 
     public Circle() {
