@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IOProductFile {
-    private static final String LAPTOP_PATH = "ss_case_study/data/laptop.csv";
-    private static final String CELL_PATH = "ss_case_study/data/cell.csv";
+    private static final String LAPTOP_PATH = "src/ss_case_study/data/laptop.csv";
+    private static final String CELL_PATH = "src/ss_case_study/data/cell.csv";
 
     public static void writeToLaptopFile(Laptop laptop) {
         try {
