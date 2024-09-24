@@ -8,10 +8,10 @@ public abstract class Person {
     private LocalDate onBoardDate;
     private String email;
 
-    private Person() {
+    public Person() {
     }
 
-    private Person(String code, String name, LocalDate onBoardDate, String email) {
+    public Person(String code, String name, LocalDate onBoardDate, String email) {
         this.code = code;
         this.name = name;
         this.onBoardDate = onBoardDate;
