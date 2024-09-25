@@ -9,15 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LaptopRepository implements ILaptopRepository {
-    private static List<Product> laptops = new ArrayList<>();
+//    private static List<Product> laptops = new ArrayList<>();
 
     @Override
     public List<Product> getAllProducts() {
+//        return laptops;
+        List<Product> laptops = new ArrayList<>();
+        laptops = IOProductFile.readFromLaptopFile();
         return laptops;
     }
 
     @Override
     public Product findById(String id) {
+        List<Product> laptops = new ArrayList<>();
+        laptops = IOProductFile.readFromLaptopFile();
         for (Product product : laptops) {
             if (product.getId().equals(id)) {
                 return product;
@@ -40,6 +45,8 @@ public class LaptopRepository implements ILaptopRepository {
 
     @Override
     public void updateProduct(Product product) {
+        List<Product> laptops = new ArrayList<>();
+        laptops = IOProductFile.readFromLaptopFile();
         if (product instanceof Laptop) {
             for (int i = 0; i < laptops.size(); i++) {
                 if (laptops.get(i).getId().equals(product.getId())) {
@@ -56,6 +63,8 @@ public class LaptopRepository implements ILaptopRepository {
 
     @Override
     public void deleteProduct(String id) {
+        List<Product> laptops = new ArrayList<>();
+        laptops = IOProductFile.readFromLaptopFile();
         laptops.removeIf(product -> product.getId().equals(id));
         System.out.println("Delete laptop.");
     }

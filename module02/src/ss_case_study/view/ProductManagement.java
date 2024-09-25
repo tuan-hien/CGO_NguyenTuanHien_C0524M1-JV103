@@ -89,6 +89,7 @@ public class ProductManagement {
         System.out.print("Enter laptop price: ");
         double newLaptopPrice = scanner.nextDouble();
         scanner.nextLine(); // dòng này để xử lý ký tự dòng mới sau khi nhập double
+        //tất cả những gì nhập từ bàn phím đều dùng scanner.nextLine
         System.out.print("Enter laptop processor: ");
         String newLaptopProcessor = scanner.nextLine();
 

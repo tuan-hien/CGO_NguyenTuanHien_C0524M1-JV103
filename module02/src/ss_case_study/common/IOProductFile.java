@@ -2,6 +2,7 @@ package ss_case_study.common;
 
 import ss_case_study.model.Cell;
 import ss_case_study.model.Laptop;
+import ss_case_study.model.Product;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class IOProductFile {
         }
     }
 
-    public static List<Laptop> readFromLaptopFile() {
-        List<Laptop> laptops = new ArrayList<>();
+    public static List<Product> readFromLaptopFile() {
+        List<Product> laptops = new ArrayList<>();
         try {
             FileReader laptopFileReader = new FileReader(LAPTOP_PATH);
             BufferedReader laptopBr = new BufferedReader(laptopFileReader);
