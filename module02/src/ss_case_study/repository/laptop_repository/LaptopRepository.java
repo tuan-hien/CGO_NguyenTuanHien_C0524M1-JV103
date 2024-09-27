@@ -1,7 +1,6 @@
 package ss_case_study.repository.laptop_repository;
 
 import ss_case_study.common.IOProductFile;
-import ss_case_study.model.Cell;
 import ss_case_study.model.Laptop;
 import ss_case_study.model.Product;
 
@@ -9,20 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LaptopRepository implements ILaptopRepository {
-//    private static List<Product> laptops = new ArrayList<>();
 
     @Override
     public List<Product> getAllProducts() {
-//        return laptops;
-        List<Product> laptops = new ArrayList<>();
-        laptops = IOProductFile.readFromLaptopFile();
-        return laptops;
+        return IOProductFile.readFromLaptopFile();
     }
 
     @Override
     public Product findById(String id) {
-        List<Product> laptops = new ArrayList<>();
-        laptops = IOProductFile.readFromLaptopFile();
+        List<Product> laptops = IOProductFile.readFromLaptopFile();
         for (Product product : laptops) {
             if (product.getId().equals(id)) {
                 return product;
@@ -36,7 +30,6 @@ public class LaptopRepository implements ILaptopRepository {
         if (product instanceof Laptop) {
             Laptop laptop = (Laptop) product;
             IOProductFile.writeToLaptopFile(laptop);
-//            laptops.add((Laptop) product);
             System.out.println("Laptop added.");
         } else {
             System.out.println("Invalid product type.");
@@ -45,38 +38,40 @@ public class LaptopRepository implements ILaptopRepository {
 
     @Override
     public void updateProduct(Product product) {
-        List<Product> laptops = new ArrayList<>();
-        laptops = IOProductFile.readFromLaptopFile();
-        if (product instanceof Laptop) {
-            for (int i = 0; i < laptops.size(); i++) {
-                if (laptops.get(i).getId().equals(product.getId())) {
-                    laptops.set(i, product);
-                    System.out.println("Laptop updated.");
-                    return;
-                }
-            }
-            System.out.println("Laptop not found.");
-        } else {
+        if (!(product instanceof Laptop)) {
             System.out.println("Invalid product type.");
+            return;
+        }
+
+        List<Product> laptops = IOProductFile.readFromLaptopFile();
+        boolean isUpdated = false;
+        for (int i = 0; i < laptops.size(); i++) {
+            Product currentProduct = laptops.get(i);
+            if (currentProduct instanceof Laptop && currentProduct.getId().equals(product.getId())) {
+                laptops.set(i, product);
+                isUpdated = true;
+                break;
+            }
+        }
+        if (isUpdated) {
+            IOProductFile.writeAllLaptopsToFile(laptops);
+            System.out.printf("Laptop with ID %s updated successfully.%n", product.getId());
+        } else {
+            System.out.println("Laptop with ID " + product.getId() + " not found.");
         }
     }
 
     @Override
     public void deleteProduct(String id) {
-        List<Product> laptops = new ArrayList<>();
-        laptops = IOProductFile.readFromLaptopFile();
-        laptops.removeIf(product -> product.getId().equals(id));
-        System.out.println("Delete laptop.");
-    }
+        List<Product> products = IOProductFile.readFromLaptopFile();
+        int originalSize = products.size();
+        products.removeIf(product -> product.getId().equals(id));
 
-//    @Override
-//    public void getProcessor(String id) {
-//        Product product = findById(id);
-//        if (product instanceof Laptop) {
-//            Laptop laptop = (Laptop) product;
-//            System.out.println("Processor: " + laptop.getProcessor());
-//        } else {
-//            System.out.println("Product is not Laptop.");
-//        }
-//    }
+        if (products.size() < originalSize) {
+            IOProductFile.writeAllLaptopsToFile(products);
+            System.out.println("Laptop with ID " + id + " deleted.");
+        } else {
+            System.out.println("Laptop with ID " + id + " not found.");
+        }
+    }
 }

@@ -7,7 +7,7 @@ import ss_case_study.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//CHƯA SỬA GIỐNG LaptopRepository
 public class CellRepository implements ICellRepository {
     private static List<Product> cells = new ArrayList<>();
 
